@@ -6,21 +6,18 @@ let inputs =
    78650;138770;73078;60696;58898;87419;71292;69120;81081;50448;94644;103919;66507;90795;135753;84528;
    103454;91278;53749;126764;58397;54734;63086;60787;120579;110097;91947;105584;]
 
-let requiredFuel moduleMass =
-    int (floor (float moduleMass / 3.0) - 2.0)
+let requiredFuel1 moduleMass = int (floor (float moduleMass / 3.0) - 2.0)
     
-let answer1 = inputs |> List.map requiredFuel |> List.sum
+let answer1 = inputs |> List.map requiredFuel1 |> List.sum
 
 let requiredFuel2 moduleMass =
     Seq.unfold (fun m ->
-        let next = requiredFuel m
-        if next > 0 then
-            Some (next, next)
-        else
-            None
+        match requiredFuel1 m with
+        | m when m > 0 -> Some (m,m)
+        | _ -> None
     ) moduleMass
     |> Seq.sum
     
 let answer2 = inputs |> List.map requiredFuel2 |> List.sum
 
-let test1 = requiredFuel2 100756 = 50346
+let test = requiredFuel2 100756 = 50346
