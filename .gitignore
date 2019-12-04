@@ -453,3 +453,7 @@ bower_components
 
 ### WebSharper ###
 Scripts/
+aoc
+AdventOfCode2019/AdventOfCode2019.fsproj
+AdventOfCode2019/AdventOfCode2019.sln
+AdventOfCode2019/Program.fs

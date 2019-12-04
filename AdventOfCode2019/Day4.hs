@@ -9,11 +9,8 @@ ok number =
         digits = show number
         pairs = zip digits (tail digits)
         hasPair pairs = 
-            let 
-                match = find (\(a,b)-> a == b) pairs
-            in case match of
-               Nothing -> False
-               otherwise -> True
+            let match = find (\(a,b)-> a == b) pairs
+            in not $ null match 
     in
         hasPair pairs && grows pairs
 
