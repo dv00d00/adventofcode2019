@@ -135,7 +135,7 @@ let pixelate (image:Image) =
         for y in 0..height-1 do
             let (shot:string) = 
                 [| for x in 0..width-1 do yield data.[y,x] |] 
-                |> Array.map ( fun c -> match c with | 1 -> '#' | _ -> ' ' )
+                |> Array.map ( fun c -> if c = White then '#' else ' ' )
                 |> System.String
             yield shot    
     |]
